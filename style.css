@@ -1,12 +1,8 @@
 :root {
 	/* --clr-main-accent: #c44a4a; */
-	--clr-main-accent-300: #bd8ead;
-	--clr-main-accent-900: #3c2d37;
-	--clr-secondary-accent-500: #1e3927;
-	--clr-secondary-accent-300: #325f41;
-	--clr-secondary-accent-100: #46855b;
+	--clr-high: #171527;
 
-	--clr-bg: #0a130d;
+	--clr-bg: #0b0a13;
 	--clr-txt: #ededed;
 	--ff: "Merriweather", serif;
 }
@@ -29,6 +25,10 @@ body {
 	font-weight: 300;
 	text-align: center;
 }
+*::selection {
+	background-color: var(--clr-high);
+	color: var(--clr-txt);
+}
 
 header {
 	font-weight: 700;
@@ -50,9 +50,9 @@ header {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	padding: 0.5rem;
+	padding: 1rem;
 	font-size: 3rem;
-	border: 2px solid var(--clr-secondary-accent-100);
+	border: 2px solid var(--clr-txt);
 }
 .score > * {
 	margin-inline: 0.5rem;
@@ -62,7 +62,7 @@ header {
 .score::after {
 	position: absolute;
 	font-size: 0.8rem;
-	background-color: var(--clr-main-accent-300);
+	background-color: var(--clr-txt);
 	color: var(--clr-bg);
 	top: 50%;
 	transform: translateY(-50%);
@@ -80,21 +80,18 @@ header {
 
 .options {
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-evenly;
 	width: min(100%, 30rem);
-	padding: 1rem;
+	padding: 0.5rem;
 	height: max-content;
 }
 
 .indiv-option {
-	color: var(--clr-main-accent-300);
-	background-color: var(--clr-secondary-accent-300);
-	font-size: 4rem;
-	width: 100px;
-	height: 100px;
-	/* padding: 1rem; */
+	font-size: 3rem;
+	width: 90px;
+	height: 90px;
 	cursor: pointer;
-	border: 3px solid var(--clr-secondary-accent-500);
+	border: 3px solid var(--clr-txt);
 	border-radius: 50%;
 	display: flex;
 	align-items: center;
@@ -102,7 +99,19 @@ header {
 	transition: all 0.3s ease;
 }
 
-.indiv-option.active-selection {
-	background-color: var(--clr-secondary-accent-100);
-	color: var(--clr-main-accent-900);
+.indiv-option:hover {
+	background-color: var(--clr-high);
+}
+
+.win {
+	border-color: #009118;
+	box-shadow: 0 0 20px #003a0a;
+}
+.loss {
+	border-color: #910000;
+	box-shadow: 0 0 20px #3a0000;
+}
+.draw {
+	border-color: #8f9100;
+	box-shadow: 0 0 20px #505200;
 }
