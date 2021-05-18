@@ -24,6 +24,9 @@ body {
 	font-size: 1.2rem;
 	font-weight: 300;
 	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
 *::selection {
 	background-color: var(--clr-high);
@@ -44,7 +47,9 @@ header {
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-evenly;
+	margin-top: -5rem;
 }
+
 .score {
 	position: relative;
 	display: flex;
@@ -114,4 +119,44 @@ header {
 .draw {
 	border-color: #8f9100;
 	box-shadow: 0 0 20px #505200;
+}
+
+.status > b {
+	font-size: 1.8rem;
+}
+
+button {
+	font-family: inherit;
+	font-size: inherit;
+	background-color: var(--clr-txt);
+	border-radius: 0;
+	border: none;
+	outline: none;
+	padding: 0.25rem 1rem;
+	cursor: pointer;
+	color: var(--clr-bg);
+}
+
+button:hover {
+	text-decoration: underline;
+}
+
+footer {
+	background-color: var(--clr-txt);
+	color: var(--clr-bg);
+	padding: 0.5rem;
+}
+
+a {
+	display: inline-block;
+	padding: 0.25rem 0.5rem;
+	margin-left: 0.25rem;
+	background-color: var(--clr-bg);
+	color: var(--clr-txt);
+	text-decoration: none;
+}
+
+a:hover {
+	background-color: var(--clr-high);
+	text-decoration: underline;
 }

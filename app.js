@@ -4,12 +4,12 @@ const rockButton = document.querySelector(".options .r");
 const paperButton = document.querySelector(".options .p");
 const scissorsButton = document.querySelector(".options .s");
 const status = document.querySelector(".status");
+const resetButton = document.querySelector("#reset");
 
 let userScore = 0;
 let compScore = 0;
 let statusString;
 let userChoice;
-let result;
 
 let compChoice = randChoice();
 
@@ -24,7 +24,7 @@ function randChoice() {
 		case 3:
 			return "s";
 	}
-};
+}
 
 function main() {
 	rockButton.addEventListener("click", () => {
@@ -44,7 +44,9 @@ function main() {
 		checkDecision(userChoice);
 		compChoice = randChoice();
 	});
-};
+
+	resetButton.addEventListener("click", reset);
+}
 
 function checkDecision(userChoice) {
 	switch (userChoice + compChoice) {
@@ -66,7 +68,7 @@ function checkDecision(userChoice) {
 	}
 	userScoreCard.innerHTML = userScore;
 	compScoreCard.innerHTML = compScore;
-};
+}
 
 function win(user) {
 	userScore++;
@@ -81,11 +83,14 @@ function win(user) {
 			statusString = "Scissors sliced Paper. ";
 			break;
 	}
-	status.innerHTML = statusString + "<strong>You</strong> win.";
+	status.innerHTML = statusString + "<strong>You</strong> win <b>🔥</b>.";
 
 	document.querySelector(`.${userChoice}`).classList.add("win");
-	setTimeout(() => document.querySelector(`.${userChoice}`).classList.remove("win"), 600)
-};
+	setTimeout(
+		() => document.querySelector(`.${userChoice}`).classList.remove("win"),
+		600
+	);
+}
 
 function loss(comp) {
 	compScore++;
@@ -100,11 +105,13 @@ function loss(comp) {
 			statusString = "Scissors sliced Paper. ";
 			break;
 	}
-	status.innerHTML = statusString + "<strong>Comp</strong> wins.";
+	status.innerHTML = statusString + "<strong>Comp</strong> wins <b>🤖</b>.";
 	document.querySelector(`.${userChoice}`).classList.add("loss");
-	setTimeout(() => document.querySelector(`.${userChoice}`).classList.remove("loss"), 600)
-
-};
+	setTimeout(
+		() => document.querySelector(`.${userChoice}`).classList.remove("loss"),
+		600
+	);
+}
 
 function draw(user) {
 	switch (user) {
@@ -118,11 +125,25 @@ function draw(user) {
 			statusString = "Two Scissors crossed.";
 			break;
 	}
-	status.innerHTML = statusString + "<strong>Draw</strong>.";
+	status.innerHTML = statusString + "<strong>Draw</strong> <b>😑</b>.";
 	document.querySelector(`.${userChoice}`).classList.add("draw");
-	setTimeout(() => document.querySelector(`.${userChoice}`).classList.remove("draw"), 600)
-};
+	setTimeout(
+		() => document.querySelector(`.${userChoice}`).classList.remove("draw"),
+		600
+	);
+}
 
-
-
-
+function reset() {
+	userScore = 0;
+	compScore = 0;
+	if (
+		status.innerText ===
+			"Make a choice. Don't worry, the computer made its choice already." ||
+		status.innerHTML === "New Game! Good luck this time <b>👍🏼</b>." ||
+		status.innerHTML === "Game is already reset <b>😉</b>."
+	) {
+		status.innerHTML = "Game is already reset <b>😉</b>.";
+	} else status.innerHTML = "New Game! Good luck this time <b>👍🏼</b>.";
+	userScoreCard.innerHTML = userScore;
+	compScoreCard.innerHTML = compScore;
+}
