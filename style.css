@@ -102,30 +102,41 @@ header {
 	align-items: center;
 	justify-content: center;
 	transition: all 0.3s ease;
+	background-color: transparent;
 }
 
 .indiv-option:hover {
-	background-color: var(--clr-high);
+	background-color: var(--clr-txt);
+	border: 3px solid var(--clr-bg);
+	box-shadow: 0 0 0 3px var(--clr-txt);
+}
+
+.indiv-option:disabled:hover {
+	background-color: transparent;
+	box-shadow: none;
+	border: 3px solid var(--clr-txt);
+	/* pointer-events: none; */
+	cursor: not-allowed;
 }
 
 .win {
-	border-color: #009118;
+	--clr-txt: #009118;
 	box-shadow: 0 0 20px #003a0a;
 }
 .loss {
-	border-color: #910000;
+	--clr-txt: #910000;
 	box-shadow: 0 0 20px #3a0000;
 }
 .draw {
-	border-color: #8f9100;
+	--clr-txt: #8f9100;
 	box-shadow: 0 0 20px #505200;
 }
 
-.status > b {
+.written > b {
 	font-size: 1.8rem;
 }
 
-button {
+#reset {
 	font-family: inherit;
 	font-size: inherit;
 	background-color: var(--clr-txt);
@@ -137,7 +148,7 @@ button {
 	color: var(--clr-bg);
 }
 
-button:hover {
+#reset:hover {
 	text-decoration: underline;
 }
 
